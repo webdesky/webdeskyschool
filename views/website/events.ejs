@@ -1,0 +1,33 @@
+	<!-- /services-home -->
+	<div class="programs py-5" id="Events">
+		<div class="w3-head-all mb-3">
+		 <h3>Events</h3>
+		</div>
+		<div class="container grids_sec_2">
+			<div class="row style-grids_main">
+              <% if(events!=""){%>
+				<% events.forEach(function(events){ %>
+
+				<div class="col-md-6 grid_sec_info">
+					<div class="style-grid-2-text_info" data-aos="fade-right">
+						<!-- <h3>Eius modi tempora incidunt ut labore</h3> -->
+						<i class="fa fa-calendar"></i> <span><%= moment(events.event_date).format('DD-MM-YYYY') %></span>
+						<p><%= events.title %> </p>
+						
+
+					</div>
+				</div>
+
+				<% }) %>
+			  <% } else{ %>
+                <p> No contents Found. </p>
+			   <% } %>
+
+			 
+
+			</div>
+		</div>
+	</div>
+	<!-- //services-home -->
+
+ 

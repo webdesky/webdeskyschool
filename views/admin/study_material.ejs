@@ -1,0 +1,171 @@
+<div class="content-wrapper">
+  <div class="row">
+    <div class="col-12 stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title"><b><u>Add Study Material</u></b></h1>
+          <p class="card-description">
+          <a href="<%= appName %>/admin/Studymaterial_list"><button class="btn btn-inverse-dark btn-fw">StudyMaterial List</button></a>
+          </p>
+
+          <div class="container">
+              
+              <% if(success!=""){ %>
+              <div class="alert alert-success" id="success-alert">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong><%= success %> </strong>
+                
+              </div>
+                
+             <% 
+            } %>
+            <% if(error!=""){ %>
+              
+               <div class="alert alert-danger" id="danger-alert">
+
+                
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong><%= error %> </strong>
+                
+              </div>
+           <% }  %>
+          </div>
+          
+          <form class="forms-sample" id="form_studymaterial" method="post" action="<%= appName %>/admin/study_material" enctype="multipart/form-data">
+            <input type="hidden" value="<%= documentdata.document_id %>" name="document_id">
+            <div class="form-group row">
+              <label for="exampleInputEmail2" class="col-sm-2 col-form-label">Class Name</label>
+              <div class="col-sm-4">
+               <select class="form-control" id="class_id" name="class_id" onchange="getSubject(this.value)">
+
+               	<option value="">Select Class</option>
+               	<%  class_list.forEach(function(class_list){ %>
+                <option <% if(documentdata.class_id==class_list.class_id){ %> selected <% } %>value="<%= class_list.class_id  %>"><%= class_list.class_name; %></option>
+				        
+               	<%   }) %>
+               </select>
+               <span for="class_id"  class="error below" style="display: none"></span>
+              </div>
+              <label for="exampleInputPassword2" class="col-sm-2 col-form-label">Subject Name</label>
+              <div class="col-sm-4">
+               <select class="form-control" name="subject_id" id="subject_id">
+
+                <% if(documentdata.name){  %>
+                  <%  subject_list.forEach(function(subject_list){ %>
+                       <option <% if(subject_list.subject_id==documentdata.subject_id){ %> selected <% }%>  value="<%= subject_list.subject_id  %>"><%= subject_list.name; %></option>
+                  <% })%>
+                 <% }else{ %>
+                   <option>Select Subject</option>
+                 <% } %>
+               </select>
+               <span for="subject_id"  class="error below" style="display: none"></span>
+              </div>
+            </div>
+            
+            <div class="form-group row">
+              <label for="exampleInputEmail2" class="col-sm-2 col-form-label">Title</label>
+              <div class="col-sm-4">
+               <input type="text" name="title" id="title" class="form-control" placeholder="Enter Title" value="<%= documentdata.title %>">
+               <span for="title"  class="error below" style="display: none"></span>
+              </div>
+              <label for="exampleInputPassword2" class="col-sm-2 col-form-label">File</label>
+              <div class="col-sm-4">
+                <input type="file" name="file" id="file" class="form-control">
+                <span for="file"  class="error below" style="display: none"></span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="exampleInputEmail2" class="col-sm-2 col-form-label">Description</label>
+                <div class="col-sm-4">
+                  <textarea class="form-control" id="descriptions" name="descriptions"><%= documentdata.description %></textarea>
+                  <span for="descriptions"  class="error below" style="display: none"></span>
+                </div>
+            </div>
+
+            <br><br><br>
+              <div class="col-sm-12" align="center">
+              <button type="submit" class="btn btn-success mr-2">Submit</button>
+              <button class="btn btn-light">Cancel</button>
+              </div>
+           
+            <br><br>
+          </form>
+          <div id="loader" style="display: none"><img src="/images/loader.gif"></div>
+          <% if(document_list!=''){ %>
+          <div class="table-responsive">
+            <table class="table table-bordered datatable">
+              <thead>
+                <tr>
+                  <th>
+                    #
+                  </th>
+                  <th>
+                   Class Name
+                  </th>
+                  <th>
+                    Subject Name
+                  </th>
+                  <th>
+                    Title
+                  </th>
+                  <th>
+                    Description
+                  </th>
+                  <th>
+                    Action
+                  </th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <%  var i=1; document_list.forEach(function(document_list){ %>
+                <tr id="tr_<%= i %>">
+                  <td>
+                    <%= i %>
+                  </td>
+                  <td>
+                    <%= document_list.class_name %>
+                  </td>
+                  <td>
+                    <%= document_list.name %>
+                  </td>
+                  <td>
+                    <%= document_list.title %>
+                  </td>
+                  <td>
+                    <%= document_list.description %>
+                  </td>
+                  <td>
+                  <a href="<%= appName %>/admin/study_material/?id=<%= document_list.document_id %>">
+
+                        <% if(document_list.file_name){ %>   
+                            <a href="<%= appName %>/study_material/<%= document_list.file_name %>"download="">
+                               <button type="button" class="btn btn-success"> Download File </button>  
+                             </a>
+                         <% } %>
+
+                         <a href="<%= appName %>/admin/study_material/?id=<%= document_list.document_id %>">
+
+                            <button type="button" class="btn btn-dark btn-fw">
+                                <i class="mdi mdi-cloud-download"></i>Edit
+                            </button>
+                         </a>
+
+                           
+                           <a href="#"  onclick="delete_record('<%= document_list.document_id %>','<%= i %>','tbl_document','document_id')" class="btn btn-sm btn-danger">Delete</a>
+
+                    
+
+                  </td>
+                </tr>
+                <% i++; })%>
+              </tbody>
+            </table>
+          </div>
+          <% } %>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

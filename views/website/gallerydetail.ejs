@@ -1,0 +1,213 @@
+<!-- gallery -->
+	<div class="banner-bottom gallery py-5">
+		<div class="container  py-md-3">
+			<div class="w3-head-all mb-3">
+	         	<h3>Our Gallery</h3>
+	       	</div>
+
+
+
+
+
+
+	       	<!-- Nav tabs -->
+			  <ul class="nav nav-tabs" role="tablist">
+			    <li class="nav-item">
+			      <a class="nav-link active" data-toggle="tab" href="#Images">Images</a>
+			    </li>
+			    <li class="nav-item">
+			      <a class="nav-link" data-toggle="tab" href="#Video">Video</a>
+			    </li>
+			  </ul>
+
+			  <!-- Tab panes -->
+			  <div class="tab-content">
+			    <div id="Images" class="container tab-pane active"><br>
+			      <h3>Image Gallery</h3>
+			      <!-- ====================================== -->
+			      	<div class="w3ls_gallery_grids row">
+						
+
+							<% if(gallery!=""){
+							  i=1; k=1;
+							 %>
+							<% gallery.forEach(function(gallery){ %>
+
+							 
+                               <div class="col-lg-4  w3_agile_gallery_grid">
+							 
+								<div class="agile_gallery_grid">
+									<a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="/images/<%= gallery.image %>" class="img-fluid">
+										<div class="agile_gallery_grid1">
+
+											<img src="/images/<%= gallery.image %>" alt=" " class="img-responsive img-fluid" />
+											<div class="w3layouts_gallery_grid1_pos">
+												<h3>Success</h3>
+												<p> Path</p>
+											</div>
+										</div>
+									</a>
+								</div>
+                                
+							 
+                              </div>
+							 
+							<% i++ %>
+
+							<% }) %>    	 
+                 			<%  } %> 
+ 
+						 
+						<div class="clearfix"></div>
+					</div>
+			      <!-- ====================================== -->
+			    </div>
+			    <div id="Video" class="container tab-pane fade"><br>
+			      <h3>Video Gallery</h3>
+			      <!-- ====================================== -->
+			      <div class="video-gallery">
+			      	<div class="row">
+                       	<% if(video!=""){
+							  i=1; k=1;
+							 %>
+						  <% video.forEach(function(video){ %>
+
+			      		<div class="col-12 col-xs-6 col-sm-4 col-md-4 col-xl-3">
+			      			<video class="vid" src="<%= video.frontend_youtube_link %>" height="200px" controls="" poster="<%= video.frontend_youtube_link %>"> 
+                            </video>
+			      		</div>
+
+			      		  <% i++ %>
+
+							<% }) %>    	 
+                 		<% } %> 
+ 
+			      	</div>
+			      </div>
+			      <!-- ====================================== -->
+			    </div>
+			  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<!-- <div class="w3ls_gallery_grids row">
+				<div class="col-lg-4  w3_agile_gallery_grid">
+					<div class="agile_gallery_grid">
+						<a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="images/g1.jpg" class="img-fluid">
+							<div class="agile_gallery_grid1">
+								<img src="images/g1.jpg" alt=" " class="img-responsive img-fluid" />
+								<div class="w3layouts_gallery_grid1_pos">
+									<h3>Success</h3>
+									<p> Path</p>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="agile_gallery_grid">
+						<a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="images/g2.jpg" class="img-fluid">
+							<div class="agile_gallery_grid1">
+								<img src="images/g2.jpg" alt=" " class="img-responsive img-fluid" />
+								<div class="w3layouts_gallery_grid1_pos">
+									<h3>Success</h3>
+									<p> Path</p>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="agile_gallery_grid">
+						<a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="images/g3.jpg" class="img-fluid">
+							<div class="agile_gallery_grid1">
+								<img src="images/g3.jpg" alt=" " class="img-responsive img-fluid" />
+								<div class="w3layouts_gallery_grid1_pos">
+									<h3>Success</h3>
+									<p> Path</p>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-4 w3_agile_gallery_grid">
+					<div class="agile_gallery_grid">
+						<a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="images/g4.jpg" class="img-fluid">
+							<div class="agile_gallery_grid1">
+								<img src="images/g4.jpg" alt=" " class="img-responsive img-fluid" />
+								<div class="w3layouts_gallery_grid1_pos">
+									<h3>Success</h3>
+									<p> Path</p>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="agile_gallery_grid">
+						<a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="images/g5.jpg" class="img-fluid">
+							<div class="agile_gallery_grid1">
+								<img src="images/g5.jpg" alt=" " class="img-responsive img-fluid" />
+								<div class="w3layouts_gallery_grid1_pos">
+									<h3>Success</h3>
+									<p> Path</p>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="agile_gallery_grid">
+						<a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="images/g6.jpg " class="img-fluid">
+							<div class="agile_gallery_grid1">
+								<img src="images/g6.jpg" alt=" " class="img-responsive img-fluid" />
+								<div class="w3layouts_gallery_grid1_pos">
+									<h3>Success</h3>
+									<p> Path</p>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-4 w3_agile_gallery_grid">
+					<div class="agile_gallery_grid">
+						<a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="images/g7.jpg" class="img-fluid">
+							<div class="agile_gallery_grid1">
+								<img src="images/g7.jpg" alt=" " class="img-responsive img-fluid" />
+								<div class="w3layouts_gallery_grid1_pos">
+									<h3>Success</h3>
+									<p> Path</p>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="agile_gallery_grid">
+						<a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="images/g8.jpg" class="img-fluid">
+							<div class="agile_gallery_grid1">
+								<img src="images/g8.jpg" alt=" " class="img-responsive img-fluid" />
+								<div class="w3layouts_gallery_grid1_pos">
+									<h3>Success</h3>
+									<p> Path</p>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="agile_gallery_grid">
+						<a title="Donec sapien massa, placerat ac sodales ac, feugiat quis est." href="images/g9.jpg" class="img-fluid">
+							<div class="agile_gallery_grid1">
+								<img src="images/g9.jpg" alt=" " class="img-responsive img-fluid" />
+								<div class="w3layouts_gallery_grid1_pos">
+									<h3>Success</h3>
+									<p> Path</p>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div> -->
+		</div>
+	</div>
+<!-- //gallery -->

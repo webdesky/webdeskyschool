@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Edu Records</title>
+	
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="" />
+   <link rel="icon" href="/images/favicon2.png" type="image/png" sizes="16x16">
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!--// Meta tag Keywords -->
+
+	<style type="text/css">
+		.top-nav {
+		    position: relative;
+		}
+		.school-name{
+		    position: absolute!important; top: 35px; left: 30%; margin-left: 4px;
+		}
+		.school-name h1 {
+		    font-size: 40px;
+		    color: #ffae11;
+		    font-weight: 600;
+		}
+
+		.navbar-expand-lg .navbar-nav {
+		    margin-top: 65px;
+		}
+		@media screen and (max-width: 768px){
+			.school-name {
+			     position: unset!important; 
+			     top: unset!important; 
+			     left: unset!important; 
+			     margin-left: unset!important; 
+			    text-align: center;
+			    padding-top: unset!important;
+			}
+			.school-name h1{
+				font-size: 20px;
+				padding-top: 10px;
+			}
+
+			.navbar-brand img{
+				width: 80px;
+			}
+		}
+	</style>
+
+	<!-- css files -->
+	<link rel="stylesheet" href="/css/bootstrap.css"> <!-- Bootstrap-Core-CSS -->
+	<link rel="stylesheet" href="/website/css/style.css" type="text/css" media="all" /> <!-- Style-CSS --> 
+	<!--<link rel="stylesheet" href="/website/css/fontawesome-all.css"> -->
+	<!--<link rel="stylesheet" href="/website/css/font-awesome.min.css">-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link href="/css/simpleLightbox.css" rel="stylesheet" type="text/css" />
+
+
+	<!-- //css files -->
+	<link href="/website/css/easy-responsive-tabs.css" rel='stylesheet' type='text/css'/>
+	<link rel="stylesheet" href="/css/jquery-ui.css" /><!-- Calendar -->
+	<!-- testimonials css -->
+	<link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen" property="" /><!-- flexslider css -->
+	<!-- //testimonials css -->
+	
+</head>
+
+<body>
+
+<!-- Navigation -->
+<header>
+    <div class="top-nav navbar-me">
+		<div class="container">
+
+			<!-- <div class="row">
+				<div class="col-12 col-xs-12 col-xl-4 logo-sec">
+					<a class="navbar-brand text-uppercase" href="index.html">Edu Records</a>
+				</div>
+				<div class="col-12 col-xs-12 col-xl-4 school-name">
+					<h3 class="text-center">School Name</h3>
+				</div>
+				<div class="col-xs-12 col-4 hidden-xs"></div>
+			</div> -->
+			<div class="school-name"><h1><%= setting.school_title %></h1></div>
+ 			<nav class="navbar navbar-expand-lg navbar-light">
+				<a class="navbar-brand text-uppercase" href="<%=appName%>/">
+				    <% if(setting.header_logo){ %>
+					<img src="/../../images/<%=setting.header_logo %>" alt="logo">
+					<% } %>
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span> 
+				</button>  
+				<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item <% if(active=='index') { %> active <% } %>">
+							<a class="nav-link page-scroll " href="<%=appName%>/">Home <span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item <% if(active=='about') { %> active <% } %>">
+							<a class="nav-link page-scroll" href="<%-appName%>/about">About </a>
+						</li>
+						<li class="nav-item <% if(active=='events') { %> active <% } %>">
+							<a class="nav-link page-scroll" href="<%=appName%>/events">Events</a>
+						</li>
+						<li class="nav-item <% if(active=='noticeboard') { %> active <% } %>">
+							<a class="nav-link page-scroll" href="<%=appName%>/noticeboard">Noticeboard</a>
+						</li>
+						
+						<li class="nav-item  <% if(active=='teachers') { %> active <% } %>">
+							<a class="nav-link page-scroll" href="<%=appName%>/teachers">Teachers</a>
+						</li>
+						<li class="nav-item  <% if(active=='gallery') { %> active <% } %>">
+							<a class="nav-link page-scroll" href="<%=appName%>/gallery">Gallery</a>
+						</li>
+						<li class="nav-item <% if(active=='admission') { %> active <% } %>">
+							<a class="nav-link page-scroll" href="<%=appName%>/admission">Admission</a>
+						</li>
+						<li class="nav-item <% if(active=='contact') { %> active <% } %>">
+							<a class="nav-link page-scroll "  href="<%=appName%>/contact">Contact</a> 
+						</li>
+						<li class="nav-item">
+							<a class="nav-link page-scroll" href="<%=appName%>/login">Login</a> 
+						</li>
+						<!-- <li class="nav-item">
+							<a class="nav-link page-scroll" href="#Contact">Contact</a>
+						</li> -->
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</div>
+</header>
+<!-- //Navigation -->
+
+
+<%-  include(pagename); %>
+<!-- footer -->
+	<section class="agile-footer w3ls-section py-5" id="Contact">
+		<div class="container">
+
+			<div class="agileits_w3layouts-footer-bottom">
+				<div class="row w3_agile-footer-grids py-5 my-4">
+
+					<div class="col-lg-4 col-sm-4 col-xs-12 w3_agile-footer1 f1">
+						<h2 class="mb-3">
+							<a href="index.html">Edu Records</a>
+						</h2>
+						<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem atus error sit volupt unde.</p>
+					</div>
+					<div class="col-lg-4 col-sm-4 col-xs-12 w3_agile-footer1 f2">
+							<h5 class="mb-3">Important Links</h5>
+							<ul class="w3ls-footer-bottom-list">
+								<li>
+									<a href="privacy-policy.html">Privacy Policy</a>
+								</li>
+								<li>
+									<a href="#">Terms of use</a>
+								</li>
+							</ul>
+					</div>
+					<div class="col-lg-4 col-sm-4 col-xs-12 w3_agile-footer1 f3">
+						<h5 class="mb-3">Social Links</h5>
+						<ul class="footer-social-icons">
+							<li>
+								<a href="#"><i class="fa fa-facebook"></i></a>
+							</li>
+							<li>
+								<a href="#"><i class="fa fa-youtube"></i></a>
+							</li>
+							<li>
+								<a href="#"><i class="fa fa-instagram"></i></a>
+							</li>
+							<li>
+								<a href="#"><i class="fa fa-google-plus"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="agileits_w3layouts-copyright text-center">
+				<p>© 2018 EduRecords. All Rights Reserved | Design by
+					<a href="#" target="=_blank"> EduRecords </a>
+				</p>
+			</div>
+		</div>
+	</section>
+	<!-- //footer -->
+
+
+
+
+
+
+<!-- Vertically centered Modal -->
+<!--<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-dialog-centered" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title text-uppercase text-center" id="exampleModalLongTitle"> EduRecords</h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--		<img src="images/ban11.jpg" class="img-fluid mb-3" alt="Modal Image" />-->
+<!--        Vivamus eget est in odio tempor interdum. Mauris maximus fermentum arcu, ac finibus ante. Sed mattis risus at ipsum elementum, ut auctor turpis cursus. Sed sed odio pharetra, aliquet velit cursus, vehicula enim. Mauris porta aliquet magna, eget laoreet ligula.-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--        <button type="button" class="btn btn-primary">Save changes</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!-- //Vertically centered Modal -->
+
+<!-- js-scripts -->		
+
+	<!-- js -->
+	<script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.js"></script> <!-- Necessary-JavaScript-File-For-Bootstrap --> 
+	<!-- //js -->	
+ 
+    <script>
+		$('#blogCarousel').carousel({
+				interval: 5000
+		});
+	</script>
+
+	
+	<!-- simpleLightbox -->
+	<script src="/js/simpleLightbox.js"></script>	
+		<script>
+		$('.w3_agile_gallery_grid a').simpleLightbox();
+	</script>
+	<!-- //simpleLightbox -->
+
+	<!-- Banner Responsive slider -->
+	<script src="/js/responsiveslides.min.js"></script>
+	<script>
+		// You can also use "$(window).load(function() {"
+		$(function () {
+			// Slideshow 4
+			$("#slider4").responsiveSlides({
+				auto: true,
+				pager: false,
+				nav: true,
+				speed: 500,
+				namespace: "callbacks",
+				before: function () {
+					$('.events').append("<li>before event fired.</li>");
+				},
+				after: function () {
+					$('.events').append("<li>after event fired.</li>");
+				}
+			});
+
+		});
+	</script>
+	<!-- // Banner Responsive slider -->
+	<!-- script for responsive tabs -->						
+	<script src="/js/easy-responsive-tabs.js"></script>
+	<script>
+		$(document).ready(function () {
+		$('#horizontalTab').easyResponsiveTabs({
+		type: 'default', //Types: default, vertical, accordion           
+		width: 'auto', //auto or any width like 600px
+		fit: true,   // 100% fit in a container
+		closed: 'accordion', // Start closed if in accordion view
+		activate: function(event) { // Callback function if tab is switched
+		var $tab = $(this);
+		var $info = $('#tabInfo');
+		var $name = $('span', $info);
+		$name.text($tab.text());
+		$info.show();
+		}
+		});
+		$('#verticalTab').easyResponsiveTabs({
+		type: 'vertical',
+		width: 'auto',
+		fit: true
+		});
+		});
+	</script>
+<!--script for responsive tabs -->
+<!-- Calendar -->
+	<script src="/js/jquery-ui.js"></script>
+	  <script>
+			  $(function() {
+				$( "#datepicker,#datepicker1,#datepicker2,#datepicker3" ).datepicker();
+			  });
+	  </script>
+<!-- //Calendar -->
+<!-- stats -->
+	<!--<script src="../../website/js/jquery.waypoints.min.js"></script>-->
+	<!--<script src="../../website/js/jquery.countup.js"></script>-->
+
+
+
+	<script>
+		$('.counter').countUp();
+	</script>
+	<!-- //stats -->
+	<!-- flexSlider --><!-- for testimonials -->
+	<!--<script defer src="js/jquery.flexslider.js"></script>-->
+	<script type="text/javascript">
+	/*
+		$(window).load(function(){
+		  $('.flexslider').flexslider({
+			animation: "slide",
+			start: function(slider){
+			  $('body').removeClass('loading');
+			}
+		  });
+		});
+		
+		*/
+	</script>
+	<!-- //flexSlider --><!-- for testimonials -->
+
+	<!-- start-smoth-scrolling -->
+	<!--<script src="../../website/js/SmoothScroll.min.js"></script>-->
+	<!--<script type="text/javascript" src="../../website/js/move-top.js"></script>-->
+	<!--<script type="text/javascript" src="../../website/js/easing.js"></script>-->
+	<!--<script type="text/javascript">-->
+	<!--	jQuery(document).ready(function($) {-->
+	<!--		$(".scroll").click(function(event){		-->
+	<!--			event.preventDefault();-->
+	<!--			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);-->
+	<!--		});-->
+	<!--	});-->
+	<!--</script>-->
+	<!-- here stars scroslling icon -->
+	<script type="text/javascript">
+// 		$(document).ready(function() {
+// 			/*
+// 				var defaults = {
+// 				containerID: 'toTop', // fading element id
+// 				containerHoverID: 'toTopHover', // fading element hover id
+// 				scrollSpeed: 1200,
+// 				easingType: 'linear' 
+// 				};
+// 			*/
+								
+// 			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+// 			});
+	</script>
+	<!-- //here ends scrolling icon -->	
+<!-- //js-scripts -->
+
+	<script type="text/javascript">
+		
+		$(window).scroll(function() {
+		    if($(this).scrollTop()>5) {
+		        $( ".navbar-me" ).addClass("fixed-me");
+		    } else {
+		        $( ".navbar-me" ).removeClass("fixed-me");
+		    }
+		});
+	</script>
+
+
+	<script type="text/javascript">
+		//    even pada saat link di klik
+		$('a.page-scroll').on('click', function(e) {
+				// ambil isi href
+				var tujuan = $(this).attr('href');
+				// tangkap elemen ybs
+				var elemenTujuan = $(tujuan);
+				// pindahkan scroll
+				$('html, body').animate({
+						scrollTop: elemenTujuan.offset().top - 50
+				}, 1250, 'swing');
+				e.preventDefault();
+		});
+	</script>
+	
+	
+	
+
+
+
+</body>
+</html>
+
+
+

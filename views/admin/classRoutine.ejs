@@ -1,0 +1,110 @@
+<div class="content-wrapper">
+  <div class="row">
+    <div class="col-12 stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title"><b><u>Add ClassRoutine</u></b></h1>
+          <p class="card-description">
+          <a href="<%= appName %>/admin/classroutineList"><button class="btn btn-inverse-dark btn-fw">ClassRoutine List</button></a>
+          </p>
+
+          <div class="container">
+             
+              <% if(success!=""){ %>
+              <div class="alert alert-success" id="success-alert">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong><%= success %> </strong>
+                
+              </div>
+                
+             <% 
+            } %>
+            <% if(error!=""){ %>
+              
+               <div class="alert alert-danger" id="danger-alert">
+
+                
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong><%= error %> </strong>
+                
+              </div>
+           <% }  %>
+          </div>
+          
+          <form class="forms-sample" method="post" action="<%= appName %>/admin/classRoutine" enctype="multipart/form-data">
+            <div class="form-group row">
+            
+              <label for="exampleInputEmail2" class="col-sm-2 col-form-label">Class Name</label>
+              <div class="col-sm-2">
+               <select class="form-control" id="class_id" name="class_id">
+                <option value="">Select Class</option>
+                <%  class_list.forEach(function(class_list){ %>
+                <option value="<%= class_list.class_id  %>"><%= class_list.class_name; %></option>
+                
+                <%   }) %>
+               </select>
+              </div>
+              <label for="exampleInputPassword2" class="col-sm-2 col-form-label">Section Name</label>
+              <div class="col-sm-2">
+               <select class="form-control" name="section_id" id="class_routin_section" >
+                 <option>Select Section</option>
+               </select>
+              </div>
+              
+              <label for="exampleInputPassword2" class="col-sm-2 col-form-label">Days</label>
+              <div class="col-sm-2">
+               <select class="form-control" name="day" id="day"  onchange="getsubteacher(this.value)">
+                 <option value="sunday">Sunday</option>
+                 <option value="monday">Monday</option>
+                 <option value="tuesday">Tuesday</option>
+                 <option value="wednesday">Wednesday</option>
+                 <option value="thursday">Thursday</option>
+                 <option value="friday">Friday</option>
+                 <option value="saturday">Saturday</option>
+               </select>
+             </div>
+             
+            </div>
+            <br><br><br>
+            <div  style="display: none;" id="classroutine">
+              <h2>Add Class Routine</h2>
+              <table class="display responsive nowrap routineTable "  style="width: 100%" >
+                <thead>
+                  <tr>
+                    <th>  #             </th>
+                    <th>  Name          </th>
+                    <th>  Teacher       </th>
+                   <!--  <th>  Day           </th> -->
+                    <th>  Starting Time </th>
+                    <th>  End Time      </th>
+                    <th>  Action      </th>
+                  </tr>
+                </thead>
+                <tbody>
+                 
+                </tbody>
+              </table>
+               <br><br><br>
+            <button type="submit" class="btn btn-success mr-2">Submit</button>
+            <button class="btn btn-light">Cancel</button>
+          </div> 
+           <!--  <div class="form-group row">
+              <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Section Name</label>
+              <div class="col-sm-9">
+               <select class="form-control" name="section_id" id="section_id">
+                 <option>Select Section</option>
+               </select>
+              </div>
+            </div> -->
+           
+          </form>
+           <div id="loader" style="display: none"><img src="/images/loader.gif"></div>
+ 
+          <br/><br/>
+          
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+<div class="col-lg-12 grid-margin stretch-card">
+	<div class="card">
+		<div class="card-body">
+			<h2 class="card-title"><b><u>Class List</u></b></h2>
+			<p class="card-description">
+				<a href="<%= appName %>/admin/class"><button class="btn btn-inverse-dark btn-fw">Add class</button></a>
+				
+			</p>
+			<div class="container">
+             
+              <% if(success!=""){ %>
+              <div class="alert alert-success" id="success-alert">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong><%= success %> </strong>
+                
+              </div>
+                
+             <% 
+            } %>
+            <% if(error!=""){ %>
+              
+               <div class="alert alert-danger" id="danger-alert">
+
+                
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong><%= error %> </strong>
+                
+              </div>
+           <% }  %>
+          </div>
+			<div class="table-responsive">
+				<table class="table table-bordered datatable">
+					<thead>
+						<tr>
+							<th>
+								#
+							</th>
+							<th>
+								Class name
+							</th>
+							<th>
+								Abbreviations
+							</th>
+							<th>
+								Action
+							</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+					<%  var i=1; class_list.forEach(function(class_list){ %>
+						<tr id="tr_<%= i %>">
+							<td >
+
+								<%= i %>
+							</td>
+							<td>
+								<%= class_list.class_name %>
+							</td>
+							<td>
+								 <%= class_list.class_abbreviations %>
+							</td>
+
+							<td>
+							 <a href="<%= appName %>/admin/classes?id=<%= class_list.class_id %>">
+
+								<button type="button" class="btn btn-dark btn-fw">
+                         	 	<i class="mdi mdi-cloud-download"></i>Edit
+                         	 	</button>
+                         	 </a>
+
+                         	 
+                         	 <a href="#"  onclick="delete_record('<%= class_list.class_id %>','<%= i %>','tbl_class','class_id')" class="btn btn-sm btn-danger">Delete</a>
+
+                         	 </td>
+
+							
+						</tr>
+					<% i++; })%>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

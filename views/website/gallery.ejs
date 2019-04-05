@@ -1,0 +1,29 @@
+<!-- gallery -->
+	<div class="banner-bottom gallery py-5" id="Gallery">
+		<div class="container  py-md-3">
+			<div class="w3-head-all mb-3">
+	        	<h3>Our Gallery</h3>
+	       	</div>
+
+	       	<div class="row">
+	       	 <% if(gallery!=""){
+			  i=1;
+			 %>
+			 <% gallery.forEach(function(gallery){ %>
+	       		<div class="col-12 col-xs-6 col-sm-4 col-md-4 item">
+		       		<a href="/gallerydetail/?id=<%= gallery.frontend_gallery_id %>">
+		       			<img src="/images/<%=gallery.image %>" class="img-fluid">
+		       			<p>View Gallery</p>
+		       		</a>
+		       	</div>
+
+		   	 <% i++ }) %>    	 
+             <%  } %>  
+
+	       	</div>
+
+		</div>
+	</div>
+<!-- //gallery -->
+
+

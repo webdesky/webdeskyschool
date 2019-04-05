@@ -1,0 +1,38 @@
+<!-- stats -->
+<div class="stats" id="Teachers">
+	<div class="container overlay-1">
+      
+	   
+    	 <% if(teacherdata!=""){
+				  i=1;
+				 %>
+				 <div class="row">
+
+		<% teacherdata.forEach(function(teacherdata){ %>
+			
+				<div class="col-12 col-md-3">
+					<img src="/images/<%=teacherdata.image%>" class="img-responsive img-fluid">
+					<p>
+						<% if(teacherdata.sex=='female') { %>
+						<strong>Mrs</strong>
+						<% }else{ %>
+						<strong>Mr</strong>
+					    <% } %>
+
+						 <%= teacherdata.name %> </p>
+					<h5><%= teacherdata.designation %></h5>
+				</div>
+ 
+			
+
+		<% i++ }) %>
+			  <% } else{ %>
+                <p> No contents Found. </p>
+		<% } %>
+         </div>
+		 
+
+		
+	</div>
+</div>
+<!-- //stats -->

@@ -1,0 +1,51 @@
+<!-- features -->
+<div class="features py-5" id="Noticeboard">  
+	<div class="container-fluid  py-md-3">  
+		<div class="w3-head-all mb-3">
+         	<h3>Noticeboard</h3>
+       	</div>
+		<div class="tabs w3-agileits-tabs"> 
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+			 <% if(noticeboard!=""){
+				  i=1;
+				 %>
+				<% noticeboard.forEach(function(noticeboard){ %>
+				<li class="<% if(i==1){ %>active <% } %>"><a href="#<%= noticeboard.notice_title %>" aria-controls="<%= noticeboard.notice_title %>" data-toggle="tab"><span>Notice <%= i %></span></a></li>
+				<!-- <li><a href="#profile" aria-controls="profile" data-toggle="tab"><span>Notice 2</span></a></li>
+				<li><a href="#messages" aria-controls="messages" data-toggle="tab"><span>Notice 3</span></a></li>
+				<li><a href="#settings" aria-controls="settings" data-toggle="tab"><span>Notice 4</span></a></li> -->
+				<% i++ }) %>
+			  <% } else{ %>
+                <p> No contents Found. </p>
+			   <% } %>
+			</ul>
+			<!-- Tab panes --> 
+			<div class="tab-content">
+			  <% if(noticeboard!=""){
+				 i=1;
+				 %> 
+				<% noticeboard.forEach(function(noticeboard){ %>	
+				<div role="tabpanel" class="tab-pane <% if(i==1){ %>active <% } %> row" id="<%= noticeboard.notice_title %>"> 
+					<div class="col-lg-6 col-md-12 features-right">
+						<div class="agileits-mid"> 
+							<h6><i class="fa fa-calendar"></i><%= moment(noticeboard.notice_date).format('DD-MM-YYYY') %></h6>
+							<h3><%= noticeboard.notice_title %></h3>
+						</div>
+						<p> <%= noticeboard.notice %></p>
+					</div>
+					<div class="col-lg-6 col-md-12 features-left agileinfo-img">
+					
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<% i++ }) %>
+			    <% } else{ %>
+			     <p> No contents Found. </p>
+				<% } %>
+				 
+			</div> 
+		</div><!-- /tabs -->  
+	</div>
+</div>
+<!-- //features --> 

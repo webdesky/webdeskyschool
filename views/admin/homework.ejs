@@ -1,0 +1,197 @@
+<div class="content-wrapper">
+  <div class="row">
+    <div class="col-12 stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title"><b><u>Add HomeWork</u></b></h1>
+          <p class="card-description">
+          <a href="<%= appName %>/admin/homeworkList"><button class="btn btn-inverse-dark btn-fw">HomeWork List</button></a>
+          </p>
+
+           <div class="container">
+             
+              <% if(success!=""){ %>
+              <div class="alert alert-success" id="success-alert">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong><%= success %> </strong>
+                
+              </div>
+                
+             <% 
+            } %>
+            <% if(error!=""){ %>
+              
+               <div class="alert alert-danger" id="danger-alert">
+
+                
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong><%= error %> </strong>
+                
+              </div>
+           <% }  %>
+          </div>
+          
+          <form class="forms-sample" id="form_homework" method="post" action="<%= appName %>/admin/HomeWork" enctype="multipart/form-data">
+            <div class="form-group row">
+              <label for="exampleInputEmail2" class="col-sm-2 col-form-label">Class Name</label>
+              <div class="col-sm-2">
+               <select class="form-control" id="class_id" name="class_id">
+               	<option value="">Select Class</option>
+               	<%  class_list.forEach(function(class_list){ %>
+                <option value="<%= class_list.class_id  %>"><%= class_list.class_name; %></option>
+				        
+               	<%   }) %>
+               </select>
+              </div>
+               <label for="exampleInputPassword2" class="col-sm-2 col-form-label">Section Name</label>
+              <div class="col-sm-2">
+               <select class="form-control" name="section_id" id="homework_section_id">
+                 <option>Select Section</option>
+               </select>
+              </div>
+            </div>
+            <br><br><br>
+            <div  style="display: none;" id="tableId">
+             <!--  <div class="form-group row">
+               <label for="exampleInputEmail2" class="col-sm-1 col-form-label">Send SMS</label>
+                <div class="col-sm-3">
+                 <input type="checkbox" value="1" name="checktosend" id="checktosend">
+                 <span for="checktosend"  class="error below" style="display: none"></span>
+                </div>
+              </div>   --> 
+              <h2>Enter Home Work</h2>
+              <table class="display responsive nowrap" id="subjectTable" style="width: 100%" >
+                <thead>
+                  <tr>
+                    <th>
+                      #S.No
+                    </th>
+                    <th>
+                       Name
+                    </th>
+                    <th>
+                      Task
+                    </th>
+                    <th>
+                      Description
+                    </th>
+                    <th>File</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                 
+                </tbody>
+              </table>
+           
+             
+            <br>
+             
+
+              <div class="col-sm-12 send-sms">
+                <label for="exampleInputEmail2"  class="col-sm-1 col-form-label lbl">Send SMS</label>
+                <div class="col-sm-1">
+                 <input type="checkbox" value="1" name="checktosend" class="form-control check" id="checktosend">
+                 <span for="checktosend"  class="error below" style="display: none"></span>
+                </div>
+                <div class="col-sm-3">
+                  <button type="submit" class="btn btn-success mr-2">Submit</button>
+                  <button class="btn btn-light">Cancel</button>
+                </div>  
+              </div>
+              <br><br>
+            </div> 
+            <br><br>
+          </form>
+           <div id="loader" style="display: none"><img src="/images/loader.gif"></div>
+ 
+           <div class="alert alert-danger nodataerror" id="danger-alert" style="display: none">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong>No subject assinged to this class</strong>
+              </div>
+
+          <% if(homework_list!=''){ %>
+          <div class="table-responsive">
+            <table class="table table-bordered datatable">
+              <thead>
+                <tr>
+                  <th>
+                    #
+                  </th>
+                  <th>
+                    Class
+                  </th>
+                  <th>
+                    Section
+                  </th>
+                  <th>
+                    Subject
+                  </th>
+                  <th>
+                    Task
+                  </th>
+                  <th>
+                    Homework Date
+                  </th>
+                  <th>
+                    Description
+                  </th>
+                  <th>
+                    Action
+                  </th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <%  var i=1; homework_list.forEach(function(homework_list){ %>
+                <tr id="tr_<%= i %>">
+                  <td>
+                    <%= i %>
+                  </td>
+                  <td>
+                    <%= homework_list.class_name %>
+                  </td>
+                  <td>
+                    <%= homework_list.section_name %>
+                  </td>
+                  
+                  <td>
+                    <%= homework_list.name %>
+                  </td>
+                  <th>
+                    <%= homework_list.task %>
+                  </th>
+                  <th>
+                    <%= moment(homework_list.homework_date).format('DD-MM-YYYY') %>
+                  </th>
+                  <td>
+                    <%= homework_list.description %>
+                  </td>
+                  <td>
+                  <!--  <a href="#">
+                    <button type="button" class="btn btn-dark btn-fw">
+                                <i class="mdi mdi-cloud-download"></i>Edit
+                                </button>
+                               </a> -->
+                            <% if(homework_list.file_name){ %>   
+                            <a href="<%= appName %>/homework_image/<%= homework_list.file_name %>"download="">
+                               <button type="button" class="btn btn-success"> Download File </button>  
+                             </a>
+                             <% } %>
+                            <a href="#">
+                               <button type="button" onclick="delete_record('<%= homework_list.homework_id %>','<%= i %>','tbl_homework','homework_id')" class="btn btn-danger btn-fw">
+                                 <i class="mdi mdi-alert-outline"></i>Delete
+                               </button>
+                            </a>
+                  </td>
+                </tr>
+                <% i++; })%>
+              </tbody>
+            </table>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
